@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     /**
@@ -14,8 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    title: DataTypes.STRING,
-    content: DataTypes.TEXT
+    title: DataTypes.TEXT,
+    content: DataTypes.TEXT,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Set to current time
+    },
   }, {
     sequelize,
     modelName: 'Post',

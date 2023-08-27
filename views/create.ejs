@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Edit Post</title>
+    <title>Create Post</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="https://cdn.tiny.cloud/1/bypqa3x1f6xn3b7wed94txn9emdx61dk0vejd4ty1gotvva7/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
@@ -11,18 +11,18 @@
             selector: 'textarea',  // Apply TinyMCE to all textareas
             plugins: 'advlist autolink lists link image charmap print preview anchor',
             toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | image',
-            forced_root_block: "false",
-            valid_elements: '*[*]',  // This line prevents TinyMCE from adding <p> tags
+            valid_elements: '*[*]',  // Allow all HTML elements
+            entities: 'raw', // Display HTML entities as they are
         });
     </script>
 </head>
 
 <body>
-    <h1>Edit Post</h1>
-    <form action="/update/<%= post.id %>" method="post">
-        <input type="text" name="title" value="<%= post.title %>" required>
-        <textarea name="content" required><%= post.content %></textarea>
-        <button type="submit">Update Post</button>
+    <h1>Create a New Post</h1>
+    <form action="/create" method="post">
+        <input type="text" name="title" placeholder="Title">
+        <textarea name="content" placeholder="Content"></textarea>
+        <button type="submit">Create Post</button>
     </form>
     <a href="/">Back to Home</a>
 </body>
