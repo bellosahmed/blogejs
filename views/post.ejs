@@ -15,9 +15,7 @@
         </h1>
         <p class="post-date">Created on: <%= post.createdAt.toDateString() %>
         </p>
-        <p>
-            <%= post.content %>
-        </p>
+        <p><%- post.content %></p>
         <div class="post-actions">
             <a href="/edit/<%= post.id %>" class="edit-button">Edit</a>
             <form action="/delete/<%= post.id %>" method="post" class="delete-form">
